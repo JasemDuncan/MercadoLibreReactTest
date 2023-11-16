@@ -1,4 +1,4 @@
-import {type Product } from "../types"
+import {type Product, type Category } from "../types"
 import { SELLER_ID, API_URL } from "@/config"
 
 export const getProducts = (category?: string) => {
@@ -17,3 +17,30 @@ export const getProducts = (category?: string) => {
             return res.results
         })
 }
+
+export const getCategories  = async (products: Product[]) => {
+    const ids = Array.from(new Set(products.map((product) => product.category_id)));
+
+    const allProductCategories = await Promise.all(
+        ids.map((id) => 
+            fetch(`https://api.mercadolibre.com/categories/${id}`)
+                .then((res) => res.json() as Promise<{path_from_root: {id: string; name: string}[]}> )
+                .then((res) => res.path_from_root),
+            )
+    )
+
+    const draft: Record<string, Category> = {};
+
+    allProductCategories.forEach((productCategories) => {
+        productCategories.forEach((singleCategory, index) => {
+            const {id} = singleCategory;
+            const parent = productCategories[index -1] as Category | undefined; 
+            const parentId = parent?.id ?? null;
+
+            draft[id] = {...singleCategory, parentId}
+        });
+    });
+
+    return Object.values(draft);
+};
+
