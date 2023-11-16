@@ -1,4 +1,4 @@
-// File: C:\Users\user\Desktop\React\MercadoLibreReactTest\migrado-libre\src\app\layout.tsx
+// File: /Users/jasemduncan/Desktop/React/MercadoLibreReactTest/migrado-libre/src/app/layout.tsx
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -533,23 +533,11 @@ video {
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-.grid-cols-4 {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-.grid-cols-\[\] {
-  grid-template-columns: ;
-}
-.grid-cols-\[repeat\] {
-  grid-template-columns: repeat;
-}
-.grid-cols-\[repeat\(\)\] {
-  grid-template-columns: repeat();
-}
-.grid-cols-\[repeat\(auto\)\] {
-  grid-template-columns: repeat(auto);
-}
 .grid-cols-\[repeat\(auto-fill\2c minmax\(2\\50px\2c 1fr\)\)\] {
   grid-template-columns: repeat(auto-fill,minmax(2\50px,1fr));
+}
+.grid-cols-\[repeat\(auto-fill\2c minmax\(250px\2c 1fr\)\)\] {
+  grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
 }
 .grid-rows-\[auto\2c 1fr\2c auto\] {
   grid-template-rows: auto 1fr auto;
@@ -587,19 +575,5 @@ video {
   color-scheme: dark;
   color: CanvasText;
   background-color: Canvas;
-}
-
-@media (min-width: 768px) {
-
-  .md\:grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 1280px) {
-
-  .xl\:grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
 }
 
